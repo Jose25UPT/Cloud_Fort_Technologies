@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #000000;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* CloudFort Button Styles */
+  .btn {
+    @apply px-8 py-4 rounded-lg font-medium transition-all duration-300 ease-in-out transform;
+  }
+  
+  .btn-primary {
+    @apply bg-electric-blue hover:bg-electric-blue/90 text-pure-white hover:scale-105 hover:shadow-lg hover:shadow-electric-blue/25;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-silver text-silver hover:bg-silver hover:text-pure-black;
+  }
+  
+  /* Section Spacing */
+  .section {
+    @apply py-20 lg:py-32 px-6 lg:px-8;
+  }
+  
+  /* Typography */
+  .hero-title {
+    @apply font-urbanist font-bold text-4xl md:text-6xl lg:text-7xl leading-tight;
+  }
+  
+  .section-title {
+    @apply font-urbanist font-bold text-3xl md:text-4xl lg:text-5xl mb-8 lg:mb-12;
+  }
+  
+  .section-subtitle {
+    @apply font-space-grotesk font-medium text-lg md:text-xl;
+  }
+  
+  /* Card Styles */
+  .service-card {
+    @apply bg-space-grey border border-graphite rounded-2xl p-8 transition-all duration-300 hover:border-electric-blue hover:shadow-xl hover:shadow-electric-blue/10 hover:scale-105;
+  }
+  
+  .process-card {
+    @apply bg-graphite rounded-2xl p-8 transition-all duration-300 hover:bg-graphite/80;
+  }
+  
+  /* Input Styles */
+  .form-input {
+    @apply bg-pure-black/50 border border-graphite rounded-lg px-4 py-3 text-pure-white placeholder-silver/70 focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-all duration-300;
+  }
+  
+  /* Animation Utilities */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+  }
+  
+  .animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
