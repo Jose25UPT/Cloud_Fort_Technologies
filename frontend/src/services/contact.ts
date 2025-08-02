@@ -15,14 +15,14 @@ export interface ContactFormData {
 export interface ContactResponse {
   success: boolean
   message: string
+  contact_id?: number
 }
 
 class ContactService {
-  private readonly baseURL = 'http://localhost:8000'
+  private readonly baseURL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:8000'
 
   async submitContactForm(data: ContactFormData): Promise<ContactResponse> {
     try {
-      // Crear FormData para enviar archivos y datos juntos
       const formData = new FormData()
       
       // Agregar todos los campos del formulario
@@ -44,19 +44,25 @@ class ContactService {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+        timeout: 30000
       })
 
       return {
         success: true,
-        message: response.data.message || 'Mensaje enviado exitosamente'
+        message: response.data.message || 'Mensaje enviado exitosamente',
+        contact_id: response.data.contact_id
       }
     } catch (error) {
       console.error('Error al enviar formulario de contacto:', error)
       
       if (axios.isAxiosError(error)) {
+        const errorMessage = error.response?.data?.detail || 
+                           error.response?.data?.message || 
+                           'Error al enviar el mensaje. Por favor intenta de nuevo.'
+        
         return {
           success: false,
-          message: error.response?.data?.message || 'Error al enviar el mensaje. Por favor intenta de nuevo.'
+          message: errorMessage
         }
       }
       

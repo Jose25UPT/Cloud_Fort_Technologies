@@ -282,8 +282,8 @@ export const useAdminStore = defineStore('admin', () => {
   // Contact Requests Actions
   const fetchContactRequests = async () => {
     const result = await handleApiCall(async () => {
-      const response = await axios.get(`${API_BASE_URL}/admin/requests`)
-      return response.data
+      const response = await axios.get(`${API_BASE_URL}/admin/contacts`)
+      return response.data.contacts || []
     })
     if (result) {
       contactRequests.value = result

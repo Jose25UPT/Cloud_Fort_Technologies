@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, readonly } from 'vue'
 import axios from 'axios'
 
 export interface LoginCredentials {
-  email: string
+  username: string
   password: string
 }
 
 export interface AuthUser {
-  email: string
+  username: string
   is_active: boolean
   is_admin: boolean
 }
@@ -59,7 +59,7 @@ export const useAuthStore = defineStore('auth', () => {
       
       // Set user data (for admin, we can set basic info)
       user.value = {
-        email: credentials.email,
+        username: credentials.username,
         is_active: true,
         is_admin: true
       }
@@ -92,7 +92,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     try {
       // Try to make an authenticated request to verify token
-      await axios.get(`${API_BASE_URL}/api/admin/hero`)
+      await axios.get(`${API_BASE_URL}/api/auth/verify`)
       return true
     } catch (err) {
       // Token is invalid, clear auth

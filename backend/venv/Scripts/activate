@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\LENOVO\Desktop\CloudFort Technologies\cloudfort-technologies\backend\venv"
+VIRTUAL_ENV="C:\Users\LENOVO\Desktop\Cloud_Fort_Technologies\backend\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -12,16 +12,16 @@
       <form @submit.prevent="handleLogin" class="mt-8 space-y-6">
         <div class="space-y-4">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
-              Correo electrónico
+            <label for="username" class="block text-sm font-medium text-gray-300 mb-2">
+              Usuario
             </label>
             <input
-              id="email"
-              v-model="form.email"
-              type="email"
+              id="username"
+              v-model="form.username"
+              type="text"
               required
               class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-              placeholder="admin@cloudfort.com"
+              placeholder="cloudfort_admin"
             />
           </div>
 
@@ -108,22 +108,23 @@ const authStore = useAuthStore()
 
 const showPassword = ref(false)
 const form = ref({
-  email: 'admin@cloudfort.com',
-  password: 'admin123'
+  username: 'cloudfort_admin',
+  password: 'CloudFort2025AdminSecure'
 })
 
 const handleLogin = async () => {
   const success = await authStore.login(form.value)
   
   if (success) {
-    router.push('/admin/dashboard')
+    // Redirect to the main admin dashboard
+    router.push('/admin')
   }
 }
 
 // Check if already authenticated
 onMounted(() => {
   if (authStore.isAuthenticated) {
-    router.push('/admin/dashboard')
+    router.push('/admin')
   }
 })
 </script>

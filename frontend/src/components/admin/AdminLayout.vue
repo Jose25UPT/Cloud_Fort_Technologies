@@ -64,12 +64,12 @@
             <!-- User info -->
             <div class="flex items-center space-x-3">
               <div class="text-right">
-                <p class="text-sm font-medium text-white">{{ authStore.user?.email }}</p>
+                <p class="text-sm font-medium text-white">{{ authStore.user?.username }}</p>
                 <p class="text-xs text-gray-400">Administrador</p>
               </div>
               <div class="flex-shrink-0">
                 <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center">
-                  <span class="text-sm font-medium text-white">A</span>
+                  <span class="text-sm font-medium text-white">CF</span>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ const sidebarOpen = ref(false)
 const navigation = [
   {
     name: 'Dashboard',
-    href: '/admin/dashboard',
+    href: '/admin',
     icon: HomeIcon
   },
   {
@@ -136,14 +136,14 @@ const navigation = [
     icon: ChatBubbleLeftRightIcon
   },
   {
-    name: 'Contacto',
-    href: '/admin/contacto',
-    icon: BuildingOfficeIcon
+    name: 'Contactos',
+    href: '/admin/contacts',
+    icon: InboxIcon
   },
   {
-    name: 'Solicitudes',
-    href: '/admin/solicitudes',
-    icon: InboxIcon
+    name: 'Configuración',
+    href: '/admin/configuracion',
+    icon: BuildingOfficeIcon
   }
 ]
 
