@@ -1,0 +1,73 @@
+services:
+  # FastAPI Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cloudfort-backend
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=sqlite:///./contacts.db
+      - CORS_ORIGINS=http://your-domain.com,https://your-domain.com,http://your-vps-ip,https://your-vps-ip
+    ports:
+      - "8000:8000"
+    volumes:
+      - backend_uploads:/app/uploads
+      - ./backend/contacts.db:/app/contacts.db
+    networks:
+      - cloudfort-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Vue.js Frontend (Production Build)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cloudfort-frontend
+    restart: unless-stopped
+    environment:
+      - VITE_API_URL=http://your-vps-ip:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:80"
+    networks:
+      - cloudfort-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Nginx Reverse Proxy (Opcional pero recomendado)
+  nginx:
+    image: nginx:alpine
+    container_name: cloudfort-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - cloudfort-network
+
+volumes:
+  backend_uploads:
+    driver: local
+
+networks:
+  cloudfort-network:
+    driver: bridge
