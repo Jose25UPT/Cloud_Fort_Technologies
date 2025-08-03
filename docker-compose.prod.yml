@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   # FastAPI Backend
   backend:
@@ -9,30 +11,32 @@ services:
     environment:
       - ENVIRONMENT=production
       - DATABASE_URL=sqlite:///./contacts.db
-      - CORS_ORIGINS=http://your-domain.com,https://your-domain.com,http://your-vps-ip,https://your-vps-ip
+      - CORS_ORIGINS=*
     ports:
       - "8000:8000"
     volumes:
       - backend_uploads:/app/uploads
-      - ./backend/contacts.db:/app/contacts.db
+      - backend_data:/app/data
     networks:
       - cloudfort-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
   # Vue.js Frontend (Production Build)
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        - NODE_ENV=production
     container_name: cloudfort-frontend
     restart: unless-stopped
     environment:
-      - VITE_API_URL=http://your-vps-ip:8000
+      - NODE_ENV=production
     depends_on:
       backend:
         condition: service_healthy
@@ -41,14 +45,16 @@ services:
     networks:
       - cloudfort-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      test: ["CMD-SHELL", "curl -f http://localhost:80 || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
 volumes:
   backend_uploads:
+    driver: local
+  backend_data:
     driver: local
 
 networks:

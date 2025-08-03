@@ -34,8 +34,18 @@ export const useAuthStore = defineStore('auth', () => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token.value}`
   }
 
-  // API Base URL
-  const API_BASE_URL = 'http://localhost:8000'
+  // API Configuration
+  const getApiUrl = (): string => {
+    // En producción, usar la URL del backend en el mismo servidor
+    if (import.meta.env.PROD) {
+      const host = window.location.hostname
+      return `http://${host}:8000`
+    }
+    // En desarrollo, usar localhost
+    return 'http://localhost:8000'
+  }
+  
+  const API_BASE_URL = getApiUrl()
 
   // Actions
   async function login(credentials: LoginCredentials): Promise<boolean> {

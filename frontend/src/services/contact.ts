@@ -19,7 +19,17 @@ export interface ContactResponse {
 }
 
 class ContactService {
-  private readonly baseURL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:8000'
+  private readonly baseURL = this.getApiUrl()
+  
+  private getApiUrl(): string {
+    // En producción, usar la URL del backend en el mismo servidor
+    if (import.meta.env.PROD) {
+      const host = window.location.hostname
+      return `http://${host}:8000`
+    }
+    // En desarrollo, usar la variable de entorno o localhost
+    return (import.meta as any).env?.VITE_API_URL || 'http://localhost:8000'
+  }
 
   async submitContactForm(data: ContactFormData): Promise<ContactResponse> {
     try {
