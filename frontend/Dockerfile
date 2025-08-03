@@ -4,9 +4,6 @@ FROM node:18-alpine as build-stage
 # Set working directory
 WORKDIR /app
 
-# Install dependencies globally to avoid permission issues
-RUN npm install -g npm@latest
-
 # Copy package files
 COPY package*.json ./
 
