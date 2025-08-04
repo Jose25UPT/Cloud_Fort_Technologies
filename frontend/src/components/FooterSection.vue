@@ -1,91 +1,125 @@
 <template>
-  <footer class="bg-pure-black py-16 px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto">
+  <footer class="varnox-bg-section py-16 px-6 lg:px-8 relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-10 right-20 w-64 h-64 rounded-full opacity-5 varnox-floating"
+         style="background: var(--varnox-gradient-hero); animation-duration: 8s;"></div>
+    <div class="absolute bottom-10 left-10 w-48 h-48 rounded-full opacity-5 varnox-floating"
+         style="background: var(--varnox-gradient-section); animation-delay: 4s; animation-duration: 6s;"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10">
       <!-- Main Footer Content -->
       <div class="grid lg:grid-cols-3 gap-12 lg:gap-8 mb-12">
-        <!-- Brand Column -->
+        
+        <!-- Enhanced Brand Column -->
         <div class="lg:col-span-1">
-          <!-- Logo -->
-          <h3 class="font-urbanist font-bold text-xl text-pure-white mb-6">
-            CLOUDFORT TECHNOLOGIES
-          </h3>
+          <!-- Logo with enhanced styling -->
+          <div class="flex items-center space-x-2 mb-6">
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center"
+                 style="background: var(--varnox-gradient-button);">
+              <span class="varnox-code-text text-white font-bold">V</span>
+            </div>
+            <h3 class="varnox-hero-title text-2xl">
+              VARNOX
+            </h3>
+          </div>
           
-          <!-- Brand Statement -->
-          <p class="text-silver font-inter leading-relaxed mb-8">
-            CLOUDFORT TECHNOLOGIES — Impulsando el futuro digital desde Tacna, Perú.
-          </p>
+          <!-- Enhanced Brand Statement -->
+          <div class="varnox-card p-4 mb-8">
+            <p class="varnox-body-text leading-relaxed">
+              <span class="varnox-code-text">&gt;</span> Impulsando el futuro digital desde Tacna, Perú
+              <span class="text-varnox-primary animate-pulse">_</span>
+            </p>
+            <div class="varnox-code-text text-xs mt-2 opacity-70">
+              // Building tomorrow's technology today
+            </div>
+          </div>
           
-          <!-- Location Badge -->
+          <!-- Enhanced Location Badge -->
           <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-electric-blue/10 rounded-full flex items-center justify-center">
-              <svg class="w-5 h-5 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                 style="background: var(--varnox-gradient-card);">
+              <svg class="w-5 h-5 text-varnox-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
             <div>
-              <p class="font-medium text-pure-white">Tacna, Perú</p>
-              <p class="text-silver text-sm">Tecnología de clase mundial</p>
+              <p class="varnox-section-title text-sm">TACNA, PERÚ</p>
+              <p class="varnox-code-text text-xs opacity-70">LOCATION: { lat: -18.0, lng: -70.2 }</p>
             </div>
           </div>
         </div>
         
-        <!-- Quick Links -->
+        <!-- Enhanced Quick Links -->
         <div class="lg:col-span-1">
-          <h4 class="font-space-grotesk font-semibold text-pure-white mb-6">
-            Navegación
-          </h4>
+          <div class="varnox-accent-title text-xs mb-6">
+            [ NAVIGATION_MENU ]
+          </div>
           <ul class="space-y-3">
             <li>
               <a 
                 href="#home" 
-                class="text-silver hover:text-electric-blue transition-colors font-inter"
+                class="varnox-body-text hover:text-varnox-primary transition-colors flex items-center group"
                 @click="scrollTo('home')"
               >
-                Inicio
+                <span class="mr-2 text-varnox-primary opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
+                HOME
               </a>
             </li>
             <li>
               <a 
-                href="#services" 
-                class="text-silver hover:text-electric-blue transition-colors font-inter"
-                @click="scrollTo('services')"
+                href="#servicios" 
+                class="varnox-body-text hover:text-varnox-primary transition-colors flex items-center group"
+                @click="scrollTo('servicios')"
               >
-                Servicios
+                <span class="mr-2 text-varnox-primary opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
+                SERVICES
               </a>
             </li>
             <li>
               <a 
-                href="#about" 
-                class="text-silver hover:text-electric-blue transition-colors font-inter"
-                @click="scrollTo('about')"
+                href="#sobre-nosotros" 
+                class="varnox-body-text hover:text-varnox-primary transition-colors flex items-center group"
+                @click="scrollTo('sobre-nosotros')"
               >
-                Nosotros
+                <span class="mr-2 text-varnox-primary opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
+                ABOUT
+              </a>
+            </li>
+            <li>
+              <a 
+                href="#proyectos" 
+                class="varnox-body-text hover:text-varnox-primary transition-colors flex items-center group"
+                @click="scrollTo('proyectos')"
+              >
+                <span class="mr-2 text-varnox-primary opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
+                PROJECTS
               </a>
             </li>
             <li>
               <a 
                 href="#contact" 
-                class="text-silver hover:text-electric-blue transition-colors font-inter"
+                class="varnox-body-text hover:text-varnox-primary transition-colors flex items-center group"
                 @click="scrollTo('contact')"
               >
-                Contacto
+                <span class="mr-2 text-varnox-primary opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
+                CONTACT
               </a>
             </li>
           </ul>
         </div>
         
-        <!-- Social & Contact -->
+        <!-- Enhanced Social & Contact -->
         <div class="lg:col-span-1">
-          <h4 class="font-space-grotesk font-semibold text-pure-white mb-6">
-            Conecta con nosotros
-          </h4>
+          <div class="varnox-accent-title text-xs mb-6">
+            [ CONNECT_WITH_US ]
+          </div>
           
           <!-- Social Links -->
           <div class="flex space-x-4 mb-6">
             <!-- GitHub -->
             <a 
-              href="https://github.com/cloudfort-technologies" 
+              href="https://github.com/varnox-technologies" 
               target="_blank" 
               rel="noopener noreferrer"
               class="w-12 h-12 bg-graphite rounded-full flex items-center justify-center hover:bg-electric-blue/20 hover:scale-110 transition-all duration-300 group"
@@ -97,7 +131,7 @@
             
             <!-- LinkedIn -->
             <a 
-              href="https://linkedin.com/company/cloudfort-technologies" 
+              href="https://linkedin.com/company/varnox-technologies" 
               target="_blank" 
               rel="noopener noreferrer"
               class="w-12 h-12 bg-graphite rounded-full flex items-center justify-center hover:bg-electric-blue/20 hover:scale-110 transition-all duration-300 group"
@@ -114,7 +148,7 @@
               <svg class="w-4 h-4 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-              <span class="text-silver text-sm">hello@cloudfort.tech</span>
+              <span class="text-silver text-sm">hello@varnox.tech</span>
             </div>
             <div class="flex items-center space-x-3">
               <svg class="w-4 h-4 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,23 +160,22 @@
         </div>
       </div>
       
-      <!-- Footer Bottom -->
-      <div class="pt-8 border-t border-graphite">
-        <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-          <!-- Copyright -->
-          <p class="text-silver text-sm font-inter">
-            © {{ new Date().getFullYear() }} CloudFort Technologies. Todos los derechos reservados.
+      <!-- Terminal Command Section -->
+      <div class="pt-8 border-t border-tech-green/30">
+        <div class="text-center">
+          <!-- Terminal prompt -->
+          <div class="font-mono text-sm text-tech-green mb-2">
+            varnox@tacna:~$
+          </div>
+          
+          <!-- Copyright centered -->
+          <p class="text-silver text-sm font-mono mb-2">
+            © {{ new Date().getFullYear() }} VARNOX. All rights reserved.
           </p>
           
-          <!-- Tech Badge -->
-          <div class="flex items-center space-x-2">
-            <span class="text-silver text-xs">Hecho con</span>
-            <div class="w-4 h-4 text-electric-blue">
-              <svg fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-            </div>
-            <span class="text-silver text-xs">desde Tacna</span>
+          <!-- Command line smaller and centered -->
+          <div class="font-mono text-xs text-gray-400">
+            echo "Ready to deploy your next mission."
           </div>
         </div>
       </div>

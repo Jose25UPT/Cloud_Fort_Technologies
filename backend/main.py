@@ -1,13 +1,11 @@
-from fastapi import FastAPI, Form, File, UploadFile, HTTPException, Depends
+from fastapi import FastAPI, Form, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from typing import Optional
 import sqlite3
 import os
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
-import jwt
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -15,7 +13,7 @@ load_dotenv()
 
 # Create FastAPI app
 app = FastAPI(
-    title="CloudFort Contact API",
+    title="VARNOX Contact API",
     version="1.0.0",
     description="Simple contact form API"
 )
@@ -29,21 +27,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Pydantic models
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-class LoginResponse(BaseModel):
-    access_token: str
-    token_type: str
-    user: dict
-
 # Debug: Print environment variables
 print("🔍 Environment Variables:")
-print(f"ADMIN_USERNAME: {os.getenv('ADMIN_USERNAME', 'NOT_SET')}")
-print(f"ADMIN_PASSWORD: {os.getenv('ADMIN_PASSWORD', 'NOT_SET')}")
-print(f"SECRET_KEY exists: {bool(os.getenv('SECRET_KEY'))}")
+print(f"ENVIRONMENT: {os.getenv('ENVIRONMENT', 'NOT_SET')}")
 
 # Initialize SQLite database
 def init_db():
@@ -81,7 +67,7 @@ os.makedirs("uploads", exist_ok=True)
 async def root():
     """Root endpoint"""
     return {
-        "message": "CloudFort Contact API",
+        "message": "VARNOX Contact API",
         "status": "running",
         "version": "1.0.0",
         "endpoints": {
@@ -183,45 +169,10 @@ async def get_uploaded_file(filename: str):
     from fastapi.responses import FileResponse
     return FileResponse(file_path)
 
-# Authentication configuration
-security = HTTPBearer()
-SECRET_KEY = os.getenv("SECRET_KEY", "CloudFort_Technologies_2025_Ultra_Secure_JWT_Key_For_Admin_Access")
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "cloudfort_admin")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "CloudFort2025AdminSecure")
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
-
-def create_access_token(data: dict):
-    """Create JWT access token"""
-    to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
-
-def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """Verify JWT token"""
-    try:
-        token = credentials.credentials
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
-            raise HTTPException(status_code=401, detail="Token inválido")
-        return username
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expirado")
-    except jwt.JWTError:
-        raise HTTPException(status_code=401, detail="Token inválido")
-
-# Protected endpoint dependency
-def get_current_user(current_user: str = Depends(verify_token)):
-    """Get current authenticated user"""
-    return current_user
-
-# Protected admin endpoints (require authentication)
+# Admin endpoints (no authentication required)
 @app.get("/api/admin/contacts")
-async def get_contacts(current_user: str = Depends(get_current_user)):
-    """Get all contacts (admin endpoint) - Protected"""
+async def get_contacts():
+    """Get all contacts (admin endpoint)"""
     try:
         conn = sqlite3.connect('contacts.db')
         cursor = conn.cursor()
@@ -254,8 +205,8 @@ async def get_contacts(current_user: str = Depends(get_current_user)):
         raise HTTPException(status_code=500, detail="Error al obtener contactos")
 
 @app.get("/api/admin/contacts/{contact_id}")
-async def get_contact_details(contact_id: int, current_user: str = Depends(get_current_user)):
-    """Get specific contact details - Protected"""
+async def get_contact_details(contact_id: int):
+    """Get specific contact details"""
     try:
         conn = sqlite3.connect('contacts.db')
         cursor = conn.cursor()
@@ -286,87 +237,6 @@ async def get_contact_details(contact_id: int, current_user: str = Depends(get_c
     except Exception as e:
         print(f"❌ Error retrieving contact: {e}")
         raise HTTPException(status_code=500, detail="Error al obtener contacto")
-
-@app.get("/api/admin/dashboard/stats")
-async def get_dashboard_stats(current_user: str = Depends(get_current_user)):
-    """Get dashboard statistics - Protected"""
-    try:
-        conn = sqlite3.connect('contacts.db')
-        cursor = conn.cursor()
-        
-        # Total contacts
-        cursor.execute('SELECT COUNT(*) FROM contacts')
-        total_contacts = cursor.fetchone()[0]
-        
-        # Contacts this month
-        cursor.execute('''
-            SELECT COUNT(*) FROM contacts 
-            WHERE datetime(created_at) >= datetime('now', 'start of month')
-        ''')
-        contacts_this_month = cursor.fetchone()[0]
-        
-        # Contacts by type
-        cursor.execute('SELECT type, COUNT(*) FROM contacts GROUP BY type')
-        contacts_by_type = dict(cursor.fetchall())
-        
-        # Contacts by budget
-        cursor.execute('SELECT budget, COUNT(*) FROM contacts GROUP BY budget')
-        contacts_by_budget = dict(cursor.fetchall())
-        
-        # Recent contacts (last 5)
-        cursor.execute('SELECT name, email, created_at FROM contacts ORDER BY created_at DESC LIMIT 5')
-        recent_contacts = cursor.fetchall()
-        
-        conn.close()
-        
-        return {
-            "total_contacts": total_contacts,
-            "contacts_this_month": contacts_this_month,
-            "contacts_by_type": contacts_by_type,
-            "contacts_by_budget": contacts_by_budget,
-            "recent_contacts": [
-                {
-                    "name": contact[0],
-                    "email": contact[1],
-                    "created_at": contact[2]
-                } for contact in recent_contacts
-            ]
-        }
-        
-    except Exception as e:
-        print(f"❌ Error retrieving dashboard stats: {e}")
-        raise HTTPException(status_code=500, detail="Error al obtener estadísticas")
-
-# Authentication endpoints
-@app.post("/api/auth/login")
-async def login(request: LoginRequest):
-    """Authenticate user and return JWT token"""
-    if request.username != ADMIN_USERNAME or request.password != ADMIN_PASSWORD:
-        raise HTTPException(status_code=401, detail="Credenciales incorrectas")
-    
-    access_token = create_access_token(data={"sub": request.username})
-    return LoginResponse(
-        access_token=access_token,
-        token_type="bearer",
-        user={
-            "username": request.username
-        }
-    )
-
-@app.get("/api/auth/verify")
-async def verify_auth(current_user: str = Depends(verify_token)):
-    """Verify if token is valid"""
-    return {
-        "valid": True,
-        "user": {
-            "username": current_user
-        }
-    }
-
-@app.post("/api/auth/logout")
-async def logout():
-    """Logout endpoint (token invalidation is handled client-side)"""
-    return {"message": "Logout exitoso"}
 
 if __name__ == "__main__":
     import uvicorn

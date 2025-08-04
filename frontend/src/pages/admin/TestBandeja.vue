@@ -1,43 +1,17 @@
 <template>
   <div class="min-h-screen bg-black text-white">
-    <!-- Header con navegación interna -->
+    <!-- Header -->
     <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-6 border-b border-gray-700">
       <div class="max-w-7xl mx-auto">
         <h1 class="text-4xl font-bold mb-4 text-center">
-          🏢 CLOUD FORT TECHNOLOGIES - PANEL ADMINISTRATIVO
+          🏢 VARNOX - BANDEJA DE ENTRADA
         </h1>
-        
-        <!-- Navegación interna -->
-        <div class="flex justify-center space-x-4 mb-4">
-          <button
-            @click="activeSection = 'bandeja'"
-            :class="[
-              'px-6 py-3 rounded-lg font-medium transition-all',
-              activeSection === 'bandeja' 
-                ? 'bg-blue-600 text-white shadow-lg' 
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-            ]"
-          >
-            📨 BANDEJA DE ENTRADA ({{ contacts.length }})
-          </button>
-          <button
-            @click="activeSection = 'dashboard'"
-            :class="[
-              'px-6 py-3 rounded-lg font-medium transition-all',
-              activeSection === 'dashboard' 
-                ? 'bg-purple-600 text-white shadow-lg' 
-                : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-            ]"
-          >
-            📊 DASHBOARD DE VISITAS
-          </button>
-        </div>
       </div>
     </div>
 
     <div class="max-w-7xl mx-auto p-6">
       <!-- SECCIÓN BANDEJA DE ENTRADA -->
-      <div v-if="activeSection === 'bandeja'">
+      <div>
         <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
           <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-bold text-white flex items-center">
@@ -243,120 +217,6 @@
           </div>
         </div>
       </div>
-
-      <!-- SECCIÓN DASHBOARD DE VISITAS -->
-      <div v-if="activeSection === 'dashboard'">
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-          <h2 class="text-3xl font-bold text-white mb-6">� DASHBOARD DE VISITAS Y ESTADÍSTICAS</h2>
-          
-          <!-- Stats Cards -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-blue-100 text-sm">Visitas Hoy</p>
-                  <p class="text-3xl font-bold">{{ dashboardStats.visitasHoy }}</p>
-                </div>
-                <div class="text-4xl">👁️</div>
-              </div>
-            </div>
-
-            <div class="bg-gradient-to-r from-green-600 to-green-700 rounded-xl p-6 text-white">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-green-100 text-sm">Total Solicitudes</p>
-                  <p class="text-3xl font-bold">{{ contacts.length }}</p>
-                </div>
-                <div class="text-4xl">📨</div>
-              </div>
-            </div>
-
-            <div class="bg-gradient-to-r from-purple-600 to-purple-700 rounded-xl p-6 text-white">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-purple-100 text-sm">Visitas Esta Semana</p>
-                  <p class="text-3xl font-bold">{{ dashboardStats.visitasSemana }}</p>
-                </div>
-                <div class="text-4xl">📈</div>
-              </div>
-            </div>
-
-            <div class="bg-gradient-to-r from-orange-600 to-orange-700 rounded-xl p-6 text-white">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-orange-100 text-sm">Tasa Conversión</p>
-                  <p class="text-3xl font-bold">{{ dashboardStats.tasaConversion }}%</p>
-                </div>
-                <div class="text-4xl">🎯</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Gráficos simulados -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="bg-gray-800 rounded-xl p-6">
-              <h3 class="text-xl font-bold text-white mb-4">📊 Visitas por Día (Últimos 7 días)</h3>
-              <div class="space-y-3">
-                <div v-for="(dia, index) in dashboardStats.visitasPorDia" :key="index" class="flex items-center justify-between">
-                  <span class="text-gray-300">{{ dia.fecha }}</span>
-                  <div class="flex items-center space-x-3">
-                    <div class="w-32 bg-gray-700 rounded-full h-2">
-                      <div 
-                        class="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                        :style="{ width: `${(dia.visitas / Math.max(...dashboardStats.visitasPorDia.map(d => d.visitas))) * 100}%` }"
-                      ></div>
-                    </div>
-                    <span class="text-white font-medium w-12 text-right">{{ dia.visitas }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-gray-800 rounded-xl p-6">
-              <h3 class="text-xl font-bold text-white mb-4">🌍 Países de Origen</h3>
-              <div class="space-y-3">
-                <div v-for="pais in dashboardStats.paisesMasVisitas" :key="pais.nombre" class="flex items-center justify-between">
-                  <div class="flex items-center space-x-2">
-                    <span class="text-2xl">{{ pais.bandera }}</span>
-                    <span class="text-gray-300">{{ pais.nombre }}</span>
-                  </div>
-                  <div class="flex items-center space-x-3">
-                    <div class="w-24 bg-gray-700 rounded-full h-2">
-                      <div 
-                        class="bg-green-500 h-2 rounded-full transition-all duration-300"
-                        :style="{ width: `${(pais.visitas / Math.max(...dashboardStats.paisesMasVisitas.map(p => p.visitas))) * 100}%` }"
-                      ></div>
-                    </div>
-                    <span class="text-white font-medium w-12 text-right">{{ pais.visitas }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Información del sistema -->
-          <div class="mt-8 bg-gray-800 rounded-xl p-6">
-            <h3 class="text-xl font-bold text-white mb-4">⚙️ Información del Sistema</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div class="text-center">
-                <div class="text-3xl mb-2">�</div>
-                <p class="text-gray-300 text-sm">Estado del Servidor</p>
-                <p class="text-green-400 font-bold">OPERATIVO</p>
-              </div>
-              <div class="text-center">
-                <div class="text-3xl mb-2">🔄</div>
-                <p class="text-gray-300 text-sm">Última Actualización</p>
-                <p class="text-white font-bold">{{ new Date().toLocaleTimeString('es-ES') }}</p>
-              </div>
-              <div class="text-center">
-                <div class="text-3xl mb-2">💾</div>
-                <p class="text-gray-300 text-sm">Base de Datos</p>
-                <p class="text-blue-400 font-bold">CONECTADA</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <!-- Modal para ver imagen completa -->
@@ -388,7 +248,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { useAuthStore } from '@/stores/auth'
 import axios from 'axios'
 
 interface Contact {
@@ -405,13 +264,9 @@ interface Contact {
   created_at: string
 }
 
-const authStore = useAuthStore()
 const contacts = ref<Contact[]>([])
 const loading = ref(false)
 const error = ref('')
-
-// Navigation state
-const activeSection = ref('bandeja')
 
 // Filter and search state
 const selectedType = ref('')
@@ -420,29 +275,6 @@ const searchTerm = ref('')
 // Modal state
 const showImageModal = ref(false)
 const modalImageSrc = ref('')
-
-// Dashboard stats (simulados por ahora)
-const dashboardStats = ref({
-  visitasHoy: 127,
-  visitasSemana: 892,
-  tasaConversion: 12.5,
-  visitasPorDia: [
-    { fecha: 'Lun', visitas: 145 },
-    { fecha: 'Mar', visitas: 132 },
-    { fecha: 'Mié', visitas: 167 },
-    { fecha: 'Jue', visitas: 98 },
-    { fecha: 'Vie', visitas: 203 },
-    { fecha: 'Sáb', visitas: 87 },
-    { fecha: 'Dom', visitas: 60 }
-  ],
-  paisesMasVisitas: [
-    { nombre: 'Colombia', bandera: '🇨🇴', visitas: 342 },
-    { nombre: 'Estados Unidos', bandera: '🇺🇸', visitas: 198 },
-    { nombre: 'México', bandera: '🇲🇽', visitas: 156 },
-    { nombre: 'España', bandera: '🇪🇸', visitas: 89 },
-    { nombre: 'Argentina', bandera: '🇦🇷', visitas: 67 }
-  ]
-})
 
 // Computed properties
 const contactTypes = computed(() => {
@@ -479,18 +311,7 @@ const loadContacts = async () => {
   try {
     console.log('🚀 CARGANDO CONTACTOS...')
     
-    const token = authStore.token
-    if (!token) {
-      error.value = 'No hay token de autenticación'
-      return
-    }
-
-    const headers = { 
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    }
-    
-    const response = await axios.get('http://localhost:8000/api/admin/contacts', { headers })
+    const response = await axios.get('http://localhost:8000/api/admin/contacts')
     
     console.log('✅ RESPUESTA:', response.data)
     
@@ -575,7 +396,7 @@ const closeImageModal = () => {
 
 const replyToContact = (contact: Contact) => {
   const subject = `Re: ${contact.type} - ${contact.name}`
-  const body = `Hola ${contact.name},\n\nGracias por contactarnos respecto a ${contact.type}.\n\nNos pondremos en contacto contigo pronto.\n\nSaludos,\nEquipo de Cloud Fort Technologies`
+  const body = `Hola ${contact.name},\n\nGracias por contactarnos respecto a ${contact.type}.\n\nNos pondremos en contacto contigo pronto.\n\nSaludos,\nEquipo de VARNOX`
   const mailtoLink = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   window.open(mailtoLink, '_blank')
 }
@@ -606,7 +427,7 @@ const downloadContactPDF = async (contact: Contact, index: number) => {
       </head>
       <body>
         <div class="header">
-          <div class="company">☁️ CLOUD FORT TECHNOLOGIES</div>
+          <div class="company">🚀 VARNOX</div>
           <div class="title">Solicitud de Contacto #${index}</div>
         </div>
         
@@ -697,7 +518,7 @@ const downloadAllContactsPDF = async () => {
       <html>
       <head>
         <meta charset="UTF-8">
-        <title>Todas las Solicitudes - Cloud Fort Technologies</title>
+        <title>Todas las Solicitudes - VARNOX</title>
         <style>
           body { font-family: Arial, sans-serif; margin: 40px; color: #333; }
           .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center; }
@@ -715,7 +536,7 @@ const downloadAllContactsPDF = async () => {
       </head>
       <body>
         <div class="header">
-          <div class="company">☁️ CLOUD FORT TECHNOLOGIES</div>
+          <div class="company">🚀 VARNOX</div>
           <div class="subtitle">Reporte Completo de Solicitudes</div>
         </div>
         
@@ -774,7 +595,7 @@ const downloadAllContactsPDF = async () => {
         `).join('')}
         
         <div class="footer">
-          <p>� Documento generado automáticamente por Cloud Fort Technologies</p>
+          <p>🚀 Documento generado automáticamente por VARNOX</p>
           <p>📅 ${new Date().toLocaleString('es-ES')}</p>
         </div>
       </body>

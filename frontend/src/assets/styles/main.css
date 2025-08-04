@@ -1,77 +1,262 @@
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+/* VARNOX Modern Design System */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Custom CSS Variables for VARNOX Modern Colors */
+:root {
+  /* VARNOX Modern Professional Palette */
+  --varnox-primary: #6366F1;     /* Índigo vibrante */
+  --varnox-secondary: #8B5CF6;   /* Púrpura elegante */
+  --varnox-accent: #F59E0B;      /* Amarillo dorado */
+  
+  /* Tactical Colors (solo para hero y footer) */
+  --tech-green: #00FF41;
+  --tactical-blue: #0A4D68;
+  --arsenal-grey: #2D3748;
+  --stealth-black: #0D1117;
+  --alert-orange: #FF6B35;
+  --radar-green: #39FF14;
+  --military-olive: #556B2F;
+  
+  /* Modern Gradients */
+  --varnox-gradient-hero: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F59E0B 100%);
+  --varnox-gradient-section: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  --varnox-gradient-card: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  --varnox-gradient-tech: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F59E0B 100%);
+  
+  /* Enhanced Gray Scale - Modern Theme */
+  --varnox-gray-50: #F8FAFC;
+  --varnox-gray-100: #F1F5F9;
+  --varnox-gray-200: #E2E8F0;
+  --varnox-gray-300: #CBD5E1;
+  --varnox-gray-400: #94A3B8;
+  --varnox-gray-500: #64748B;
+  --varnox-gray-600: #475569;
+  --varnox-gray-700: #334155;
+  --varnox-gray-800: #1E293B;
+  --varnox-gray-900: #0F172A;
+  
+  /* Background Colors - Modern */
+  --varnox-bg-primary: #FFFFFF;
+  --varnox-bg-secondary: #F8FAFC;
+  --varnox-bg-card: rgba(255, 255, 255, 0.8);
+}
+
 @layer base {
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
     scroll-behavior: smooth;
   }
   
   body {
-    background-color: #000000;
-    color: #FFFFFF;
+    background: var(--varnox-bg-primary);
+    color: var(--varnox-gray-50);
     overflow-x: hidden;
+    line-height: 1.6;
+  }
+  
+  /* Typography Base */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
   }
 }
 
 @layer components {
-  /* CloudFort Button Styles */
-  .btn {
-    @apply px-8 py-4 rounded-lg font-medium transition-all duration-300 ease-in-out transform;
+  /* VARNOX Typography System */
+  .varnox-hero-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 800;
+    background: var(--varnox-gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
   }
   
-  .btn-primary {
-    @apply bg-electric-blue hover:bg-electric-blue/90 text-pure-white hover:scale-105 hover:shadow-lg hover:shadow-electric-blue/25;
+  .varnox-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--varnox-gray-50);
   }
   
-  .btn-secondary {
-    @apply bg-transparent border-2 border-silver text-silver hover:bg-silver hover:text-pure-black;
+  .varnox-accent-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    color: var(--varnox-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
   
-  /* Section Spacing */
-  .section {
-    @apply py-20 lg:py-32 px-6 lg:px-8;
+  .varnox-display-title {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 700;
+    background: var(--varnox-gradient-section);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
-  /* Typography */
-  .hero-title {
-    @apply font-urbanist font-bold text-4xl md:text-6xl lg:text-7xl leading-tight;
+  .varnox-code-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: var(--varnox-primary);
   }
   
-  .section-title {
-    @apply font-urbanist font-bold text-3xl md:text-4xl lg:text-5xl mb-8 lg:mb-12;
+  .varnox-body-text {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    color: var(--varnox-gray-300);
+    line-height: 1.7;
   }
   
-  .section-subtitle {
-    @apply font-space-grotesk font-medium text-lg md:text-xl;
+  /* VARNOX Button System */
+  .varnox-btn {
+    @apply px-8 py-4 rounded-xl font-semibold transition-all duration-300 ease-in-out transform;
+    font-family: 'Poppins', sans-serif;
   }
   
-  /* Card Styles */
-  .service-card {
-    @apply bg-space-grey border border-graphite rounded-2xl p-8 transition-all duration-300 hover:border-electric-blue hover:shadow-xl hover:shadow-electric-blue/10 hover:scale-105;
+  .varnox-btn-primary {
+    background: var(--varnox-gradient-section);
+    color: white;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
   }
   
-  .process-card {
-    @apply bg-graphite rounded-2xl p-8 transition-all duration-300 hover:bg-graphite/80;
+  .varnox-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
   }
   
-  /* Input Styles */
-  .form-input {
-    @apply bg-pure-black/50 border border-graphite rounded-lg px-4 py-3 text-pure-white placeholder-silver/70 focus:border-electric-blue focus:ring-1 focus:ring-electric-blue transition-all duration-300;
+  .varnox-btn-secondary {
+    background: transparent;
+    color: var(--varnox-primary);
+    border: 2px solid var(--varnox-primary);
   }
   
-  /* Animation Utilities */
-  .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+  .varnox-btn-secondary:hover {
+    background: var(--varnox-primary);
+    color: white;
+    transform: translateY(-2px);
   }
   
-  .animate-on-scroll.animate {
-    opacity: 1;
-    transform: translateY(0);
+  /* VARNOX Card System */
+  .varnox-card {
+    background: var(--varnox-bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .varnox-card:hover {
+    border-color: var(--varnox-primary);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+    transform: translateY(-5px);
+  }
+  
+  /* VARNOX Section System */
+  .varnox-section {
+    @apply py-20 lg:py-32 px-6 lg:px-8 relative;
+  }
+}
+
+/* ===== FORM ELEMENTS ===== */
+.varnox-input {
+  width: 100%;
+  background: var(--varnox-card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.varnox-input:focus {
+  outline: none;
+  border-color: var(--varnox-primary);
+  box-shadow: 0 0 0 1px var(--varnox-primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.varnox-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+}
+
+.varnox-input:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.varnox-textarea {
+  width: 100%;
+  background: var(--varnox-card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  min-height: 120px;
+  resize: vertical;
+  transition: all 0.3s ease;
+}
+
+.varnox-textarea:focus {
+  outline: none;
+  border-color: var(--varnox-primary);
+  box-shadow: 0 0 0 1px var(--varnox-primary);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.varnox-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes varnox-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes varnox-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.1; }
+  50% { transform: scale(1.1); opacity: 0.2; }
+}
+
+/* VARNOX Background Utilities */
+.varnox-bg-hero {
+  background: var(--varnox-gradient-hero);
+  position: relative;
+}
+
+.varnox-bg-section {
+  background: linear-gradient(135deg, var(--varnox-bg-primary) 0%, var(--varnox-bg-secondary) 100%);
+}
+
+.varnox-bg-footer {
+  background: linear-gradient(135deg, var(--varnox-gray-900) 0%, var(--varnox-gray-800) 50%, var(--varnox-primary) 100%);
+}
+
+.varnox-floating {
+  animation: varnox-float 6s ease-in-out infinite;
+}
+
+@layer utilities {
+  .text-varnox-primary { color: var(--varnox-primary); }
+  .text-varnox-secondary { color: var(--varnox-secondary); }
+  .text-varnox-accent { color: var(--varnox-accent); }
+  .text-varnox-gradient {
+    background: var(--varnox-gradient-section);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

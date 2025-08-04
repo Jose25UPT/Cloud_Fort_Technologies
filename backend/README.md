@@ -1,4 +1,4 @@
-# CloudFort Technologies - Backend
+# VARNOX - Backend
 
 FastAPI + SQLAlchemy 2.0 async + PostgreSQL + Redis backend API.
 
@@ -124,8 +124,8 @@ BACKEND_CORS_ORIGINS=["http://localhost:3000"]
 
 ### Development
 ```bash
-docker build -t cloudfort-backend .
-docker run -p 8000:8000 cloudfort-backend
+docker build -t varnox-backend .
+docker run -p 8000:8000 varnox-backend
 ```
 
 ### Production

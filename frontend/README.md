@@ -1,4 +1,4 @@
-# CloudFort Technologies - Frontend
+# VARNOX - Frontend
 
 Vue.js 3 + TypeScript + Tailwind CSS frontend application.
 

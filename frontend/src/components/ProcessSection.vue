@@ -1,91 +1,154 @@
 <template>
-  <section id="proceso" class="bg-pure-black section">
-    <div class="max-w-7xl mx-auto">
-      <!-- Section Header -->
+  <section id="proceso" class="varnox-bg-section varnox-section relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-20 left-10 w-36 h-36 rounded-full opacity-5 varnox-floating"
+         style="background: var(--varnox-gradient-hero);"></div>
+    <div class="absolute bottom-32 right-20 w-28 h-28 rounded-full opacity-5 varnox-floating"
+         style="background: var(--varnox-gradient-section); animation-delay: 4s;"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Section Header with new typography -->
       <div class="text-center mb-16 lg:mb-20">
-        <h2 class="section-title text-pure-white animate-on-scroll">
-          Así trabajamos contigo
+        <!-- Accent title -->
+        <div class="varnox-accent-title text-sm mb-4">
+          [ NUESTRO PROCESO ]
+        </div>
+        
+        <h2 class="varnox-section-title text-4xl md:text-5xl lg:text-6xl mb-6 animate-on-scroll">
+          <span class="varnox-display-title">DEPLOY</span> Process
         </h2>
+        
+        <div class="varnox-card max-w-3xl mx-auto p-6">
+          <p class="varnox-body-text text-lg leading-relaxed">
+            <span class="varnox-code-text">&gt;</span> Así trabajamos contigo para hacer realidad tus ideas
+            <span class="text-varnox-primary animate-pulse">_</span>
+          </p>
+        </div>
       </div>
       
-      <!-- Process Steps -->
+      <!-- Process Steps with enhanced VARNOX design -->
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
         <div 
           v-for="(step, index) in processSteps" 
           :key="step.id"
-          class="process-card animate-on-scroll group"
+          class="group varnox-card transition-all duration-300 animate-on-scroll relative overflow-hidden"
           :style="{ animationDelay: `${index * 0.2}s` }"
         >
-          <!-- Step Number -->
+          <!-- Enhanced Step Number -->
           <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-electric-blue/10 rounded-full flex items-center justify-center border-2 border-electric-blue/20 group-hover:border-electric-blue/50 transition-colors">
-              <span class="font-urbanist font-bold text-electric-blue text-lg">
-                {{ step.number }}
+            <div class="w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:scale-110"
+                 style="background: var(--varnox-gradient-button); border-color: var(--varnox-primary);">
+              <span class="varnox-code-text text-white font-bold text-lg">
+                {{ step.number.toString().padStart(2, '0') }}
               </span>
             </div>
             
-            <!-- Connection Line (except for last step) -->
+            <!-- Enhanced Connection Line -->
             <div 
               v-if="index < processSteps.length - 1"
-              class="hidden lg:block flex-1 h-px bg-graphite/50 ml-6"
-            ></div>
+              class="hidden lg:block flex-1 h-0.5 ml-6 relative overflow-hidden"
+              style="background: linear-gradient(90deg, var(--varnox-primary) 0%, transparent 100%);"
+            >
+              <div class="absolute inset-0 bg-gradient-to-r from-varnox-primary to-transparent animate-pulse"></div>
+            </div>
           </div>
           
-          <!-- Step Icon -->
-          <div class="w-16 h-16 bg-space-grey rounded-2xl flex items-center justify-center mb-6 group-hover:bg-graphite/50 transition-colors">
-            <component :is="step.icon" class="w-8 h-8 text-electric-blue" />
+          <!-- Enhanced Step Icon -->
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300"
+               style="background: var(--varnox-gradient-card);">
+            <component :is="step.icon" class="w-8 h-8 text-varnox-primary" />
           </div>
           
-          <!-- Step Content -->
-          <h3 class="font-urbanist font-bold text-xl text-pure-white mb-4 group-hover:text-electric-blue transition-colors">
+          <!-- Step Content with new typography -->
+          <h3 class="varnox-section-title text-xl mb-4 group-hover:text-varnox-primary transition-colors">
             {{ step.title }}
           </h3>
-          <p class="text-silver font-inter leading-relaxed mb-6">
+          <p class="varnox-body-text text-sm leading-relaxed mb-6">
             {{ step.description }}
           </p>
           
-          <!-- Step Details -->
-          <ul class="space-y-2">
-            <li 
-              v-for="detail in step.details" 
-              :key="detail"
-              class="flex items-center text-sm text-silver/80"
-            >
-              <div class="w-1.5 h-1.5 bg-electric-blue rounded-full mr-3"></div>
-              {{ detail }}
-            </li>
-          </ul>
+          <!-- Enhanced Step Details -->
+          <div class="mb-4">
+            <div class="varnox-accent-title text-xs mb-3">DELIVERABLES:</div>
+            <ul class="space-y-2">
+              <li 
+                v-for="detail in step.details" 
+                :key="detail"
+                class="flex items-center varnox-body-text text-xs"
+              >
+                <span class="text-varnox-primary mr-2 text-sm">&gt;</span>
+                {{ detail }}
+              </li>
+            </ul>
+          </div>
           
-          <!-- Hover Effect -->
-          <div class="absolute inset-0 bg-electric-blue/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+          <!-- Status Badge -->
+          <div class="absolute top-4 right-4">
+            <div class="varnox-code-text text-xs px-2 py-1 rounded" 
+                 style="background: var(--varnox-primary); color: white;">
+              STEP_{{ step.number }}
+            </div>
+          </div>
+          
+          <!-- Animated border on hover -->
+          <div class="absolute inset-0 border border-transparent group-hover:border-varnox-primary/20 rounded-lg transition-all duration-300 pointer-events-none"></div>
         </div>
       </div>
       
-      <!-- Process Timeline (Mobile) -->
+      <!-- Enhanced Process Timeline -->
       <div class="block lg:hidden mt-12">
-        <div class="flex justify-center">
-          <div class="flex space-x-4">
-            <div 
-              v-for="(_, index) in processSteps" 
-              :key="index"
-              class="w-8 h-2 rounded-full"
-              :class="index === 0 ? 'bg-electric-blue' : 'bg-graphite'"
-            ></div>
+        <div class="varnox-card p-4">
+          <div class="flex justify-center items-center space-x-3">
+            <span class="varnox-code-text text-xs">PROGRESS:</span>
+            <div class="flex space-x-2">
+              <div 
+                v-for="(_, index) in processSteps" 
+                :key="index"
+                class="w-8 h-2 rounded-full transition-all duration-300"
+                :class="index === 0 ? 'bg-varnox-primary animate-pulse' : 'bg-white/20'"
+              ></div>
+            </div>
+            <span class="varnox-code-text text-xs">25%</span>
           </div>
         </div>
       </div>
       
-      <!-- Call to Action -->
+      <!-- Enhanced Call to Action -->
       <div class="text-center mt-16 lg:mt-20 animate-on-scroll" style="animation-delay: 0.8s;">
-        <p class="text-silver font-inter text-lg mb-8">
-          ¿Listo para comenzar tu proyecto tecnológico?
-        </p>
-        <button 
-          @click="scrollToContact"
-          class="btn btn-primary font-space-grotesk"
-        >
-          Iniciemos juntos
-        </button>
+        <div class="varnox-card p-12 relative overflow-hidden">
+          <!-- Background decoration -->
+          <div class="absolute inset-0 opacity-5">
+            <div class="w-full h-full" style="background: var(--varnox-gradient-hero);"></div>
+          </div>
+          
+          <div class="relative z-10">
+            <div class="varnox-accent-title text-sm mb-4">
+              [ LISTO PARA COMENZAR ]
+            </div>
+            <h3 class="varnox-display-title text-3xl md:text-4xl mb-6">
+              ¿Listo para comenzar tu proyecto?
+            </h3>
+            <p class="varnox-body-text text-lg mb-8 max-w-2xl mx-auto">
+              Transformemos tus ideas en soluciones tecnológicas que impulsen tu negocio al siguiente nivel.
+            </p>
+            <div class="space-x-4">
+              <button 
+                @click="scrollToContact"
+                class="varnox-btn varnox-btn-primary"
+              >
+                [ DEPLOY_PROJECT ]
+              </button>
+              <button class="varnox-btn varnox-btn-secondary">
+                Ver Metodología
+              </button>
+            </div>
+            
+            <!-- Code element -->
+            <div class="varnox-code-text text-xs mt-6">
+              &gt; VARNOX.initProject(yourIdea) // Let's build something amazing
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

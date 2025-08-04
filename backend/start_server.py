@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Force reload environment
 load_dotenv('.env', override=True)
 
-print("🚀 Starting CloudFort Backend...")
+print("🚀 Starting VARNOX Backend...")
 print(f"DATABASE_TYPE: {os.getenv('DATABASE_TYPE')}")
 
 if __name__ == "__main__":

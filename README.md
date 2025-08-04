@@ -1,10 +1,10 @@
-# 🏢 CloudFort Technologies - Sistema Web Completo
+# 🚀 VARNOX - Sistema Web Completo
 
 Sistema web empresarial completo con formulario de contacto, bandeja de entrada administrativa avanzada y arquitectura Docker optimizada.
 
 ## 🎯 Descripción del Proyecto
 
-CloudFort Technologies es una plataforma web integral que incluye:
+VARNOX es una plataforma web integral que incluye:
 - **🌐 Sitio web corporativo** moderno y responsive
 - **📨 Bandeja de entrada administrativa** con funcionalidades avanzadas
 - **📊 Dashboard de estadísticas** integrado

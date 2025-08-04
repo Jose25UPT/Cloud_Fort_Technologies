@@ -9,7 +9,7 @@ import { RouterView } from 'vue-router'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  console.log('CloudFort Technologies App Initialized')
+  console.log('VARNOX App Initialized')
 })
 </script>
 

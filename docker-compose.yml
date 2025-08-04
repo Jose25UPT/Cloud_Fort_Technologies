@@ -4,7 +4,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: cloudfort-backend
+    container_name: varnox-backend
     restart: unless-stopped
     environment:
       - ENVIRONMENT=development
@@ -15,21 +15,22 @@ services:
     volumes:
       - ./backend:/app
       - backend_uploads:/app/uploads
+      - backend_data:/app/data
     networks:
-      - cloudfort-network
+      - varnox-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/health || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
   # Vue.js Frontend
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
-    container_name: cloudfort-frontend
+      dockerfile: Dockerfile
+    container_name: varnox-frontend
     restart: unless-stopped
     environment:
       - VITE_API_URL=http://localhost:8000
@@ -38,27 +39,29 @@ services:
       backend:
         condition: service_healthy
     ports:
-      - "3000:3000"
+      - "3000:80"
     volumes:
       - ./frontend:/app
       - frontend_node_modules:/app/node_modules
     networks:
-      - cloudfort-network
+      - varnox-network
     stdin_open: true
     tty: true
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
       interval: 30s
       timeout: 10s
-      retries: 3
-      start_period: 40s
+      retries: 5
+      start_period: 60s
 
 volumes:
   backend_uploads:
     driver: local
   frontend_node_modules:
     driver: local
+  backend_data:
+    driver: local
 
 networks:
-  cloudfort-network:
+  varnox-network:
     driver: bridge
