@@ -16,7 +16,7 @@
           <div class="flex items-center justify-between mb-6">
             <h2 class="text-3xl font-bold text-white flex items-center">
               📨 BANDEJA DE ENTRADA
-              <span v-if="contacts.length > 0" class="ml-3 bg-red-500 text-white text-sm px-3 py-1 rounded-full animate-pulse">
+              <span v-if="contacts.length > 0" class="ml-3 bg-red-500 text-white text-sm px-3 py-1 rounded-full">
                 {{ contacts.length }} NUEVAS
               </span>
             </h2>

@@ -1,125 +1,124 @@
 <template>
-  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-stealth-black">
-    <!-- Matrix Background Grid -->
-    <div class="absolute inset-0 opacity-20">
-      <div class="matrix-grid"></div>
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
+    <!-- Fondo Degradado Tipo Escama -->
+    <div class="absolute inset-0 scale-pattern-bg"></div>
+    
+    <!-- Overlay de Gradiente Elegante -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900"></div>
+    
+    <!-- Efectos de Luz Dinámicos -->
+    <div class="absolute inset-0">
+      <div class="floating-orb orb-1"></div>
+      <div class="floating-orb orb-2"></div>
+      <div class="floating-orb orb-3"></div>
     </div>
     
-    <!-- Digital Rain Effect -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="digital-rain"></div>
+    <!-- Patrón de Partículas -->
+    <div class="absolute inset-0 particles-container">
+      <div class="particle p-1"></div>
+      <div class="particle p-2"></div>
+      <div class="particle p-3"></div>
+      <div class="particle p-4"></div>
+      <div class="particle p-5"></div>
     </div>
     
-    <!-- Radar Pulse Effect -->
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="radar-pulse"></div>
-    </div>
-    
-    <!-- Floating Tech Elements -->
-    <div class="absolute top-20 right-20 w-32 h-32 rounded-full opacity-20 tech-floating bg-gradient-to-r from-tech-green to-alert-orange"></div>
-    <div class="absolute bottom-32 left-16 w-24 h-24 rounded-full opacity-20 tech-floating bg-gradient-to-r from-radar-green to-tactical-blue" style="animation-delay: 2s;"></div>
-    <div class="absolute top-1/2 right-1/4 w-16 h-16 rounded-full opacity-20 tech-floating bg-gradient-to-r from-alert-orange to-tech-green" style="animation-delay: 1s;"></div>
-    
-    <!-- Status Panel Mejorado -->
-    <div class="absolute top-20 left-6 bg-arsenal-grey/50 backdrop-blur-md border-2 border-tech-green/40 rounded p-4 font-mono text-sm shadow-xl">
-      <div class="text-tech-green mb-2 font-bold">[ SYSTEM STATUS ]</div>
-      <div class="flex items-center gap-2 mb-1">
-        <div class="w-3 h-3 bg-tech-green rounded-full animate-pulse"></div>
-        <span class="text-white font-bold">🟢 STATUS: ONLINE</span>
+    <!-- Status Panel Militar Tecnológico -->
+    <div class="absolute top-20 left-6 bg-slate-900 backdrop-blur-lg border border-green-500 rounded p-4 font-mono text-sm shadow-2xl">
+      <div class="text-green-400 mb-3 font-bold text-xs tracking-wider">[ TACTICAL STATUS ]</div>
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full shadow-green-400 shadow-lg"></div>
+        <span class="text-green-300 font-medium">SISTEMAS OPERATIVOS</span>
       </div>
-      <div class="flex items-center gap-2 mb-1">
-        <div class="w-3 h-3 bg-alert-orange rounded-full animate-pulse"></div>
-        <span class="text-white font-bold">🟠 MISSION: ACTIVE</span>
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-2 h-2 bg-amber-400 rounded-full shadow-amber-400 shadow-lg"></div>
+        <span class="text-amber-300 font-medium">MISIONES ACTIVAS</span>
       </div>
-      <div class="flex items-center gap-2">
-        <div class="w-3 h-3 bg-tech-green rounded-full animate-pulse"></div>
-        <span class="text-white font-bold">🟢 THREAT_LEVEL: LOW</span>
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 bg-red-400 rounded-full shadow-red-400 shadow-lg"></div>
+        <span class="text-red-300 font-medium">DEFCON 2 - READY</span>
       </div>
     </div>
     
     <!-- Main Content -->
     <div class="relative z-10 text-center px-6 lg:px-8 max-w-6xl mx-auto">
-      <!-- Military Code Header -->
-      <div class="mb-4 animate-fade-in font-mono text-tech-green text-sm">
-        [ INITIALIZING TACTICAL PROTOCOLS ]
+      <!-- Header Militar -->
+      <div class="mb-6 animate-fade-in font-mono text-green-400 text-sm tracking-wider">
+        [ TACTICAL OPERATIONS COMMAND - VARNOX ]
       </div>
       
-      <!-- Main Title Mejorado -->
-      <div class="mb-8 lg:mb-12 animate-fade-in bg-stealth-black/60 backdrop-blur-md border-2 border-tech-green/40 rounded-lg p-6 shadow-2xl">
-        <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-wider font-mono font-bold drop-shadow-lg">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech-green via-alert-orange to-radar-green">
+      <!-- Main Title Militar -->
+      <div class="mb-8 lg:mb-12 animate-fade-in">
+        <h1 class="text-6xl md:text-8xl lg:text-9xl tracking-wider font-mono font-bold">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-red-400 to-amber-400 drop-shadow-2xl">
             VARNOX
           </span>
         </h1>
-        <div class="text-tech-green/90 text-lg md:text-xl font-mono mt-2 font-bold drop-shadow-md">
-          [ TACTICAL DEVELOPMENT UNIT ]
+        <div class="text-green-300 text-lg md:text-xl font-mono mt-4 font-medium tracking-widest">
+          ADVANCED WARFARE TECHNOLOGIES
         </div>
       </div>
       
-      <!-- Military Headline Mejorado -->
-      <h2 class="text-4xl md:text-6xl lg:text-7xl mb-6 lg:mb-8 animate-fade-in-up font-mono font-bold text-white drop-shadow-2xl" style="animation-delay: 0.3s;">
-        DEPLOYING DIGITAL
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech-green to-alert-orange drop-shadow-xl">
-          WARFARE
+      <!-- Headline Militar -->
+      <h2 class="text-4xl md:text-6xl lg:text-7xl mb-8 animate-fade-in-up font-mono font-bold text-white drop-shadow-2xl" style="animation-delay: 0.3s;">
+        DEPLOY DIGITAL
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-amber-400">
+          SUPREMACY
         </span>
       </h2>
       
-      <!-- Terminal Style Subtitle Mejorado -->
-      <div class="bg-stealth-black/60 backdrop-blur-md border border-tech-green/40 rounded-lg p-4 font-mono text-lg md:text-xl mb-12 lg:mb-16 max-w-4xl mx-auto animate-fade-in-up text-tech-green/90 shadow-xl" style="animation-delay: 0.6s;">
-        <span class="text-tech-green">></span> Soluciones tecnológicas de élite<br/>
-        <span class="text-tech-green">></span> Operaciones de desarrollo avanzado<br/>
-        <span class="text-tech-green">></span> Misiones críticas ejecutadas con precisión militar_
+      <!-- Subtitle Militar -->
+      <div class="bg-slate-900/80 backdrop-blur-lg border border-green-500/30 rounded p-6 font-mono text-lg md:text-xl mb-12 lg:mb-16 max-w-4xl mx-auto animate-fade-in-up shadow-2xl" style="animation-delay: 0.6s;">
+        <div class="text-slate-200 leading-relaxed">
+          <span class="text-green-400 font-semibold">▶</span> TACTICAL WEB & MOBILE SYSTEMS<br/>
+          <span class="text-red-400 font-semibold">▶</span> FORTIFIED CLOUD INFRASTRUCTURE<br/>
+          <span class="text-amber-400 font-semibold">▶</span> NEXT-GEN MISSION CRITICAL SOLUTIONS
+        </div>
       </div>
       
-      <!-- Command Prompt Style -->
-      <div class="font-mono text-sm md:text-base mb-8 animate-fade-in-up text-white/70" style="animation-delay: 0.7s;">
-        <span class="text-tech-green">varnox@tactical:~$</span> ./deploy --mission=success --target=innovation
+      <!-- Code Display Militar -->
+      <div class="font-mono text-sm md:text-base mb-8 animate-fade-in-up text-slate-400" style="animation-delay: 0.7s;">
+        <span class="text-green-400">varnox@tactical:~$</span> ./deploy --mode=classified --target=domination
       </div>
       
-      <!-- Military CTA Buttons Mejorados -->
+      <!-- CTA Buttons Militares -->
       <div class="animate-fade-in-up flex flex-col sm:flex-row gap-6 justify-center" style="animation-delay: 0.9s;">
         <button 
           @click="scrollToContact"
-          class="group relative overflow-hidden bg-stealth-black/60 border-2 border-tech-green text-tech-green px-8 py-4 rounded-lg font-mono font-bold text-lg transition-all duration-300 hover:bg-tech-green hover:text-stealth-black backdrop-blur-md shadow-2xl transform hover:scale-105 hover:shadow-[0_20px_25px_-5px_rgba(0,255,65,0.3)]"
+          class="group relative overflow-hidden bg-gradient-to-r from-green-600 via-red-600 to-amber-500 text-white px-8 py-4 rounded font-mono font-bold text-lg transition-all duration-300 shadow-2xl hover:shadow-red-500/30 transform hover:scale-105 border border-green-500/50"
         >
-          <span class="relative z-10 drop-shadow-lg">[ INITIATE CONTACT ]</span>
-          <div class="absolute inset-0 h-full w-full scale-0 bg-tech-green transition-all duration-300 group-hover:scale-100"></div>
+          <span class="relative z-10">[ INITIATE MISSION ]</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-red-600 via-green-600 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
         <button 
           @click="scrollToServices"
-          class="group relative overflow-hidden bg-stealth-black/60 border-2 border-alert-orange text-alert-orange px-8 py-4 rounded-lg font-mono font-bold text-lg transition-all duration-300 hover:bg-alert-orange hover:text-stealth-black backdrop-blur-md shadow-2xl transform hover:scale-105 hover:shadow-[0_20px_25px_-5px_rgba(255,107,53,0.3)]"
+          class="group relative overflow-hidden bg-slate-900/80 border-2 border-green-500 text-green-300 px-8 py-4 rounded font-mono font-bold text-lg transition-all duration-300 backdrop-blur-lg shadow-2xl hover:bg-green-500 hover:text-black transform hover:scale-105"
         >
-          <span class="relative z-10 drop-shadow-lg">[ VIEW INTEL ]</span>
-          <div class="absolute inset-0 h-full w-full scale-0 bg-alert-orange transition-all duration-300 group-hover:scale-100"></div>
+          <span class="relative z-10">[ INTEL BRIEFING ]</span>
         </button>
       </div>
       
-      <!-- Terminal Output -->
-      <div class="font-mono text-xs mt-8 animate-fade-in-up text-tech-green/60" style="animation-delay: 1.2s;">
+      <!-- Output Terminal Militar -->
+      <div class="font-mono text-xs mt-8 animate-fade-in-up text-green-400" style="animation-delay: 1.2s;">
         <div class="typing-animation">
-          > VARNOX.init() // Systems operational<br/>
-          > Deploying tactical solutions...<br/>
-          > Ready for mission deployment_
+          > VARNOX_TACTICAL.initialize() // Sistema de combate activado<br/>
+          > Cargando arsenales tecnológicos...<br/>
+          > Comando listo para operaciones de élite_
         </div>
       </div>
     </div>
     
-    <!-- Enhanced Military Scroll Indicator Mejorado -->
+    <!-- Scroll Indicator Militar -->
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center animate-bounce">
-      <div class="mb-3 text-tech-green font-mono text-sm font-bold drop-shadow-lg">SCROLL TO EXPLORE</div>
+      <div class="mb-3 text-green-400 font-mono text-sm font-medium tracking-wide">CONTINUE_MISSION</div>
       <div class="flex flex-col items-center">
-        <div class="w-6 h-10 border-2 border-tech-green rounded-full p-1 bg-stealth-black/40 backdrop-blur-sm shadow-lg">
-          <div class="w-2 h-2 bg-tech-green rounded-full animate-ping"></div>
+        <div class="w-6 h-10 border-2 border-green-400 rounded-sm p-1 bg-slate-900 backdrop-blur-sm shadow-lg">
+          <div class="w-2 h-2 bg-green-400 rounded-sm animate-ping"></div>
         </div>
-        <div class="text-tech-green mt-2 animate-pulse text-lg">▼</div>
+        <svg class="w-6 h-6 text-green-400 mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        </svg>
       </div>
     </div>
-    
-    <!-- Military Tech Elements -->
-    <div class="absolute top-20 right-10 w-3 h-3 rounded-full opacity-70 animate-pulse bg-tech-green"></div>
-    <div class="absolute bottom-40 left-10 w-2 h-2 rounded-full opacity-50 bg-alert-orange animate-ping"></div>
-    <div class="absolute top-1/3 right-20 w-2 h-2 rounded-full opacity-60 animate-ping bg-radar-green"></div>
-    <div class="absolute top-1/4 left-1/4 w-1 h-1 rounded-full opacity-40 bg-tech-green"></div>
   </section>
 </template>
 
@@ -139,115 +138,178 @@ const scrollToServices = () => {
 };
 </script>
 
+
 <style scoped>
-.font-mono {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+/* Tipografías VARNOX */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 0.05em;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025em;
 }
 
-/* Matrix Grid Background */
-.matrix-grid {
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: grid-pulse 4s ease-in-out infinite;
+.font-jetbrains {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
 }
 
-@keyframes grid-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.1; }
+/* Fondo Degradado Tipo Escama */
+.scale-pattern-bg {
+  background: 
+    radial-gradient(circle at 25% 25%, #1e1b4b 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, #312e81 0%, transparent 50%),
+    radial-gradient(circle at 25% 75%, #581c87 0%, transparent 50%),
+    radial-gradient(circle at 75% 25%, #7c2d12 0%, transparent 50%),
+    linear-gradient(45deg, 
+      rgba(30, 27, 75, 0.8) 0%, 
+      rgba(49, 46, 129, 0.6) 25%, 
+      rgba(88, 28, 135, 0.7) 50%, 
+      rgba(124, 45, 18, 0.5) 75%, 
+      rgba(30, 27, 75, 0.8) 100%
+    );
+  background-size: 100px 100px, 150px 150px, 120px 120px, 80px 80px, 100% 100%;
+  background-position: 0 0, 50px 50px, 25px 75px, 75px 25px, 0 0;
+  animation: scale-flow 12s ease-in-out infinite;
 }
 
-/* Digital Rain Effect */
-.digital-rain {
-  width: 100%;
-  height: 100%;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    rgba(0, 255, 65, 0.03) 1px,
-    rgba(0, 255, 65, 0.03) 3px,
-    transparent 4px
-  );
-  animation: digital-fall 6s linear infinite;
+@keyframes scale-flow {
+  0%, 100% {
+    background-position: 0 0, 50px 50px, 25px 75px, 75px 25px, 0 0;
+  }
+  25% {
+    background-position: 20px 20px, 70px 30px, 45px 95px, 95px 5px, 0 0;
+  }
+  50% {
+    background-position: -20px 20px, 30px 70px, 5px 55px, 55px 45px, 0 0;
+  }
+  75% {
+    background-position: 10px -10px, 60px 60px, 35px 85px, 85px 15px, 0 0;
+  }
 }
 
-@keyframes digital-fall {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+/* Efectos de Luz Dinámicos */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: float-orb 8s ease-in-out infinite;
 }
 
-/* Radar Pulse Effect */
-.radar-pulse {
+.orb-1 {
+  top: 20%;
+  left: 20%;
   width: 200px;
   height: 200px;
-  border: 2px solid rgba(0, 255, 65, 0.3);
-  border-radius: 50%;
-  animation: radar-sweep 3s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(99, 102, 241, 1) 0%, transparent 70%);
+  animation-delay: 0s;
 }
 
-@keyframes radar-sweep {
+.orb-2 {
+  top: 60%;
+  right: 20%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 1) 0%, transparent 70%);
+  animation-delay: 2s;
+}
+
+.orb-3 {
+  bottom: 20%;
+  left: 60%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 1) 0%, transparent 70%);
+  animation-delay: 4s;
+}
+
+@keyframes float-orb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 1;
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.9);
+    opacity: 1;
+  }
+}
+
+/* Partículas Animadas */
+.particles-container {
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(99, 102, 241, 0.8);
+  border-radius: 50%;
+  animation: particle-float 6s linear infinite;
+}
+
+.p-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  background: rgba(139, 92, 246, 0.8);
+}
+
+.p-2 {
+  top: 30%;
+  left: 70%;
+  animation-delay: 1.2s;
+  background: rgba(245, 158, 11, 0.8);
+}
+
+.p-3 {
+  top: 70%;
+  left: 20%;
+  animation-delay: 2.4s;
+  background: rgba(99, 102, 241, 0.8);
+}
+
+.p-4 {
+  top: 50%;
+  left: 80%;
+  animation-delay: 3.6s;
+  background: rgba(139, 92, 246, 0.8);
+}
+
+.p-5 {
+  top: 80%;
+  left: 60%;
+  animation-delay: 4.8s;
+  background: rgba(245, 158, 11, 0.8);
+}
+
+@keyframes particle-float {
   0% {
-    transform: scale(0.5);
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
     opacity: 1;
   }
   100% {
-    transform: scale(2);
+    transform: translateY(-100vh) translateX(50px);
     opacity: 0;
   }
 }
 
-/* Tech Floating Elements */
-.tech-floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(180deg);
-  }
-}
-
-/* Tactical Button Effects */
-.tactical-btn {
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-}
-
-.tactical-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.tactical-btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.tactical-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
-}
-
-/* Typing Animation */
+/* Animación de Escritura */
 .typing-animation {
   overflow: hidden;
-  border-right: 2px solid #00FF41;
+  border-right: 2px solid #6366f1;
   white-space: nowrap;
   animation: typing 3s steps(40) 1s forwards, blink 1s infinite;
   width: 0;
@@ -259,11 +321,11 @@ const scrollToServices = () => {
 }
 
 @keyframes blink {
-  0%, 50% { border-color: #00FF41; }
+  0%, 50% { border-color: #6366f1; }
   51%, 100% { border-color: transparent; }
 }
 
-/* Fade In Animations */
+/* Animaciones de Entrada */
 .animate-fade-in {
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
@@ -288,15 +350,36 @@ const scrollToServices = () => {
   }
 }
 
-/* Responsive adjustments */
+/* Efectos de Botones */
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Efectos de Sombra para Indicadores */
+.shadow-green-400\/50 {
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.shadow-amber-400\/50 {
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.shadow-purple-400\/50 {
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .matrix-grid {
-    background-size: 30px 30px;
+  .scale-pattern-bg {
+    background-size: 60px 60px, 90px 90px, 70px 70px, 50px 50px, 100% 100%;
   }
   
-  .radar-pulse {
-    width: 150px;
-    height: 150px;
+  .floating-orb {
+    display: none;
+  }
+  
+  .particle {
+    display: none;
   }
   
   .typing-animation {
@@ -305,30 +388,31 @@ const scrollToServices = () => {
 }
 
 @media (max-width: 640px) {
-  .tech-floating {
-    display: none;
+  .scale-pattern-bg {
+    background-size: 40px 40px, 60px 60px, 50px 50px, 30px 30px, 100% 100%;
   }
 }
 
-/* Enhanced visibility styles */
-.glow-tech-green {
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5),
-               0 0 20px rgba(0, 255, 65, 0.3),
-               0 0 30px rgba(0, 255, 65, 0.2);
+/* Glass Morphism Mejorado */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 
-.enhanced-backdrop {
-  backdrop-filter: blur(8px) brightness(1.1);
-  background: rgba(13, 17, 23, 0.8);
-  border: 2px solid rgba(0, 255, 65, 0.4);
-  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.15),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+/* Mejoras de Contraste y Visibilidad */
+.drop-shadow-2xl {
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
 }
 
-.ultra-visible {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
-               0 0 8px rgba(0, 255, 65, 0.6);
-  font-weight: 900;
-  letter-spacing: 0.05em;
+/* Efectos de Gradiente Animado */
+.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 </style>

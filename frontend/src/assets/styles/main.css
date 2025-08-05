@@ -53,7 +53,7 @@
   
   body {
     background: var(--varnox-bg-primary);
-    color: var(--varnox-gray-50);
+    color: var(--varnox-gray-700);
     overflow-x: hidden;
     line-height: 1.6;
   }
