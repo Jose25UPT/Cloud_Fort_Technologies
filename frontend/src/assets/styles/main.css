@@ -1,100 +1,105 @@
-/* VARNOX Modern Design System */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+/* VARNOX TACTICAL OPERATIONS SYSTEM */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Exo+2:wght@300;400;500;600;700;800;900&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables for VARNOX Modern Colors */
+/* VARNOX TACTICAL COLOR SYSTEM */
 :root {
-  /* VARNOX Modern Professional Palette */
-  --varnox-primary: #6366F1;     /* Índigo vibrante */
-  --varnox-secondary: #8B5CF6;   /* Púrpura elegante */
-  --varnox-accent: #F59E0B;      /* Amarillo dorado */
+  /* Primary Military Palette */
+  --varnox-primary: #00FF41;     /* Matrix Green */
+  --varnox-secondary: #FF6B35;   /* Alert Orange */
+  --varnox-accent: #0A84FF;      /* Tactical Blue */
   
-  /* Tactical Colors (solo para hero y footer) */
-  --tech-green: #00FF41;
-  --tactical-blue: #0A4D68;
-  --arsenal-grey: #2D3748;
-  --stealth-black: #0D1117;
-  --alert-orange: #FF6B35;
-  --radar-green: #39FF14;
-  --military-olive: #556B2F;
+  /* Tactical Operations Colors */
+  --tech-green: #00FF41;         /* Matrix/Terminal Green */
+  --cyber-green: #39FF14;        /* Cyber/Radar Green */
+  --military-olive: #4A5D23;     /* Military Olive */
+  --tactical-gray: #2A2D3A;      /* Tactical Gray */
+  --stealth-black: #0D1117;      /* Stealth Black */
+  --arsenal-dark: #1A1D29;       /* Arsenal Dark */
+  --alert-orange: #FF6B35;       /* Alert Orange */
+  --warning-red: #FF453A;        /* Warning Red */
+  --hud-blue: #0A84FF;           /* HUD Blue */
+  --scanner-cyan: #64D2FF;       /* Scanner Cyan */
   
-  /* Modern Gradients */
-  --varnox-gradient-hero: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F59E0B 100%);
-  --varnox-gradient-section: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-  --varnox-gradient-card: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-  --varnox-gradient-tech: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #F59E0B 100%);
+  /* Military Gradients */
+  --varnox-gradient-tactical: linear-gradient(135deg, #00FF41 0%, #39FF14 50%, #0A84FF 100%);
+  --varnox-gradient-stealth: linear-gradient(135deg, #0D1117 0%, #2A2D3A 50%, #1A1D29 100%);
+  --varnox-gradient-hud: linear-gradient(135deg, #0A84FF 0%, #64D2FF 100%);
+  --varnox-gradient-alert: linear-gradient(135deg, #FF6B35 0%, #FF453A 100%);
   
-  /* Enhanced Gray Scale - Modern Theme */
-  --varnox-gray-50: #F8FAFC;
-  --varnox-gray-100: #F1F5F9;
-  --varnox-gray-200: #E2E8F0;
-  --varnox-gray-300: #CBD5E1;
-  --varnox-gray-400: #94A3B8;
-  --varnox-gray-500: #64748B;
-  --varnox-gray-600: #475569;
-  --varnox-gray-700: #334155;
-  --varnox-gray-800: #1E293B;
-  --varnox-gray-900: #0F172A;
+  /* Tactical Gray Scale */
+  --varnox-gray-50: #F0F2F5;      /* Light Terminal */
+  --varnox-gray-100: #E4E7EB;     /* Terminal Background */
+  --varnox-gray-200: #C8CDD4;     /* Interface Gray */
+  --varnox-gray-300: #9AA0A9;     /* Disabled Text */
+  --varnox-gray-400: #6B7280;     /* Secondary Text */
+  --varnox-gray-500: #4B5563;     /* Primary Text */
+  --varnox-gray-600: #374151;     /* Dark Text */
+  --varnox-gray-700: #2A2D3A;     /* Tactical Gray */
+  --varnox-gray-800: #1A1D29;     /* Arsenal Dark */
+  --varnox-gray-900: #0D1117;     /* Stealth Black */
   
-  /* Background Colors - Modern */
-  --varnox-bg-primary: #FFFFFF;
-  --varnox-bg-secondary: #F8FAFC;
-  --varnox-bg-card: rgba(255, 255, 255, 0.8);
+  /* Background Colors - Tactical */
+  --varnox-bg-primary: #0D1117;
+  --varnox-bg-secondary: #1A1D29;
+  --varnox-bg-card: rgba(42, 45, 58, 0.9);
 }
 
 @layer base {
   html {
-    font-family: 'Source Sans Pro', system-ui, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     scroll-behavior: smooth;
   }
   
   body {
     background: var(--varnox-bg-primary);
-    color: var(--varnox-gray-700);
+    color: var(--tech-green);
     overflow-x: hidden;
     line-height: 1.6;
+    font-family: 'JetBrains Mono', monospace;
   }
   
-  /* Typography Base */
+  /* Typography Base - Tactical */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     line-height: 1.2;
+    font-family: 'Orbitron', monospace;
   }
 }
 
 @layer components {
-  /* VARNOX Typography System */
+  /* VARNOX TACTICAL Typography System */
   .varnox-hero-title {
     font-family: 'Orbitron', monospace;
     font-weight: 800;
-    background: var(--varnox-gradient-hero);
+    background: var(--varnox-gradient-tactical);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+    text-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
   }
   
   .varnox-section-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Orbitron', monospace;
     font-weight: 700;
-    color: var(--varnox-gray-50);
+    color: var(--tech-green);
   }
   
   .varnox-accent-title {
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
-    color: var(--varnox-accent);
+    color: var(--alert-orange);
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
   
   .varnox-display-title {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'Orbitron', monospace;
     font-weight: 700;
-    background: var(--varnox-gradient-section);
+    background: var(--varnox-gradient-tactical);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -103,17 +108,17 @@
   .varnox-code-text {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 500;
-    color: var(--varnox-primary);
+    color: var(--tech-green);
   }
   
   .varnox-body-text {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Code Pro', monospace;
     font-weight: 400;
     color: var(--varnox-gray-300);
     line-height: 1.7;
   }
   
-  /* VARNOX Button System */
+  /* VARNOX TACTICAL Button System */
   .varnox-btn {
     @apply px-8 py-4 rounded-xl font-semibold transition-all duration-300 ease-in-out transform;
     font-family: 'Poppins', sans-serif;
